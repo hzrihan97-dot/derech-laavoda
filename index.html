@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b5cff" />
+  <meta name="description" content="דרך לעבודה — מחשבון נסיעות חכם למחירי תחבורה ציבורית לפי מוצא ויעד." />
+  <title>דרך לעבודה — מחשבון נסיעות חכם</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root{--bg:#f5f8ff;--card:#fff;--ink:#0e1b33;--muted:#667085;--line:#e6eaf0;--blue:#0b5cff;--blue2:#0047cc;--soft:#eef4ff;--success:#087252;--successbg:#eaf8f3;--danger:#a82e2e;--warn:#8b5b08;--warnbg:#fff7df;--shadow:0 22px 60px rgba(15,35,70,.10);--radius:24px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:"Rubik",-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans Hebrew",Arial,sans-serif;color:var(--ink);background:radial-gradient(circle at 85% 0%,#dceaff 0,transparent 32rem),linear-gradient(180deg,#f8fbff 0%,#f4f7fb 100%);min-height:100vh}button,input{font:inherit}.wrap{max-width:960px;margin:0 auto;padding:32px 18px 64px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:28px}.brand{display:flex;align-items:center;gap:11px;font-weight:800;font-size:19px}.logo{width:42px;height:42px;border-radius:14px;background:linear-gradient(145deg,var(--blue),#6da0ff);display:grid;place-items:center;box-shadow:0 10px 25px rgba(11,92,255,.25)}.logo svg{width:23px;height:23px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}.official{font-size:12px;font-weight:800;color:#335;display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.78);border:1px solid #e4e9f1;border-radius:999px;padding:8px 11px;backdrop-filter:blur(10px)}.dot{width:8px;height:8px;border-radius:50%;background:#17a36b;box-shadow:0 0 0 4px #e6f7f1}.hero{text-align:center;padding:14px 0 18px}.eyebrow{display:inline-flex;align-items:center;gap:7px;padding:7px 11px;border-radius:999px;background:var(--soft);color:#154b9d;font-size:12px;font-weight:800}h1{font-size:clamp(34px,6vw,56px);line-height:1.03;letter-spacing:-1.5px;margin:14px 0 12px}.hero p{display:block}.card{background:rgba(255,255,255,.95);border:1px solid rgba(226,232,240,.95);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px}.form-grid{display:grid;grid-template-columns:1fr 54px 1fr;gap:12px;align-items:end}.field label{display:block;font-size:14px;font-weight:700;margin:0 0 8px;color:#344054}.input-wrap{position:relative}.input-wrap svg{position:absolute;right:14px;top:50%;transform:translateY(-50%);width:20px;height:20px;stroke:#7c8aa0;fill:none;stroke-width:2}input{width:100%;height:56px;border:1.5px solid #d9e0ea;border-radius:16px;background:#fff;padding:0 45px 0 14px;font-size:17px;font-weight:500;color:var(--ink);outline:none;transition:.2s}input:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(11,92,255,.09)}input::placeholder{color:#9aa4b2}.swap{height:56px;width:54px;border:1px solid var(--line);border-radius:16px;background:#fff;display:grid;place-items:center;cursor:pointer;transition:.18s}.swap:hover{background:#f7f9fc;transform:translateY(-1px)}.swap svg{width:22px;height:22px;stroke:#355;fill:none;stroke-width:2}.hint{display:none}.primary{width:100%;height:58px;margin-top:18px;border:0;border-radius:17px;background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;font-size:17px;font-weight:900;cursor:pointer;box-shadow:0 12px 28px rgba(11,92,255,.22);transition:.18s;display:flex;align-items:center;justify-content:center;gap:9px}.primary:hover{transform:translateY(-1px);box-shadow:0 15px 32px rgba(11,92,255,.28)}.primary:disabled{opacity:.65;cursor:wait;transform:none}.spinner{width:18px;height:18px;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:spin .8s linear infinite;display:none}.loading .spinner{display:block}.loading .btn-text{opacity:.85}@keyframes spin{to{transform:rotate(360deg)}}.error{display:none;margin-top:14px;padding:13px 14px;border-radius:14px;background:#fff2f2;border:1px solid #ffd6d6;color:#9b2929;font-size:13px;line-height:1.55}.result{display:none;margin-top:20px;border-top:1px solid var(--line);padding-top:20px}.route-line{display:flex;justify-content:center;align-items:center;gap:8px;color:#5d6b7e;font-size:14px;font-weight:800;flex-wrap:wrap;margin-bottom:12px}.route-chip{background:#f3f6fb;border:1px solid #e6eaf0;border-radius:999px;padding:6px 12px}.route-line .sep{color:#a1acba}.metrics{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:12px;margin-top:14px}.metric{border:1px solid var(--line);border-radius:18px;padding:17px;background:#fbfcfe;min-height:116px;display:flex;flex-direction:column;justify-content:space-between}.metric.main{background:linear-gradient(145deg,#0b5cff,#2c72ff);border-color:transparent;color:#fff;box-shadow:0 14px 28px rgba(11,92,255,.18)}.metric small{font-size:12px;color:#6b778c;font-weight:800}.metric.main small{color:#dce8ff}.metric strong{display:block;font-size:31px;letter-spacing:-.5px;margin-top:10px}.metric.main strong{font-size:37px}.metric span{font-size:11px;color:#7f8a9a;margin-top:4px}.metric.main span{color:#dce8ff}.boundary,.monthly,.details,footer{display:none}.credit{text-align:center;margin-top:18px;font-size:13px;font-weight:500;color:#7d8797;letter-spacing:.2px}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+    body:before,body:after{content:"";position:fixed;border-radius:50%;filter:blur(10px);pointer-events:none;z-index:-1;opacity:.34;animation:floatBlob 11s ease-in-out infinite alternate}
+    body:before{width:330px;height:330px;background:linear-gradient(135deg,#8fb7ff,#cfe1ff);top:8%;right:-120px}
+    body:after{width:280px;height:280px;background:linear-gradient(135deg,#d6f5e9,#9bdac7);bottom:5%;left:-110px;animation-delay:-4s}
+    @keyframes floatBlob{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(20px,28px,0) scale(1.08)}}
+    .topbar{animation:fadeDown .55s ease both}.hero{animation:fadeUp .65s .05s ease both}.card{animation:fadeUp .72s .12s ease both;transition:transform .22s ease,box-shadow .22s ease}.card:hover{transform:translateY(-2px);box-shadow:0 28px 70px rgba(15,35,70,.13)}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}@keyframes fadeDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+    .logo{position:relative;overflow:hidden}.logo:after{content:"";position:absolute;inset:-55%;background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.48) 50%,transparent 65%);transform:translateX(-70%) rotate(8deg);animation:logoShine 4.8s ease-in-out infinite}@keyframes logoShine{0%,60%{transform:translateX(-80%) rotate(8deg)}85%,100%{transform:translateX(80%) rotate(8deg)}}
+    .primary{position:relative;overflow:hidden}.primary:after{content:"";position:absolute;top:-40%;bottom:-40%;width:55px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.34),transparent);transform:translateX(160px) rotate(12deg);animation:buttonShine 3.8s ease-in-out infinite}@keyframes buttonShine{0%,65%{right:-90px}100%{right:110%}}
+    .result.show{animation:resultIn .42s ease both}.result.show .metric{animation:metricIn .48s ease both}.result.show .metric:nth-child(2){animation-delay:.05s}.result.show .metric:nth-child(3){animation-delay:.1s}@keyframes resultIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}@keyframes metricIn{from{opacity:0;transform:translateY(10px) scale(.985)}to{opacity:1;transform:none}}
+    .metric{transition:transform .18s ease,box-shadow .18s ease}.metric:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(24,39,75,.08)}
+    .eyebrow{box-shadow:0 8px 22px rgba(21,75,157,.08)}
+    @media (prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+
+    .hero-title{font-size:clamp(42px,7vw,68px);line-height:1.05;letter-spacing:-1.1px;margin:8px 0 7px;font-weight:900}.hero-subtitle{font-size:clamp(17px,2.2vw,20px);font-weight:600;color:#53647d;margin:0;letter-spacing:0}.bus-track{position:relative;max-width:430px;height:64px;margin:18px auto 2px;overflow:hidden}.bus-road{position:absolute;left:0;right:0;bottom:13px;height:3px;border-radius:999px;background:linear-gradient(90deg,transparent,#c9d7ed 10%,#aebfda 50%,#c9d7ed 90%,transparent)}.bus-road:after{content:"";position:absolute;inset:-4px 0 auto 0;height:1px;background:repeating-linear-gradient(90deg,transparent 0 18px,#d8e2f1 18px 31px)}.moving-bus{position:absolute;bottom:15px;left:-66px;width:58px;height:38px;animation:drive 6.8s ease-in-out infinite;filter:drop-shadow(0 9px 8px rgba(11,92,255,.18))}.moving-bus .body{fill:url(#busGrad)}.moving-bus .window{fill:#e8f2ff}.moving-bus .wheel{fill:#18263d}.moving-bus .hub{fill:#b8cff7}.moving-bus .light{fill:#ffe581}.moving-bus .detail{fill:#fff;opacity:.95}@keyframes drive{0%{left:-70px;transform:translateY(0)}10%{transform:translateY(-1px)}48%{transform:translateY(0)}88%{left:calc(100% + 8px);transform:translateY(-1px)}100%{left:calc(100% + 8px);transform:translateY(0)}}@media(prefers-reduced-motion:reduce){.moving-bus{animation:none;left:calc(50% - 29px)}.topbar,.hero,.card{animation:none!important}}
+    @media(max-width:700px){.wrap{padding-top:18px}.topbar{margin-bottom:18px}.official{display:none}.hero{padding-top:8px}.hero p{font-size:15px}.card{padding:18px;border-radius:21px}.form-grid{grid-template-columns:1fr}.swap{width:100%;height:44px}.swap svg{transform:rotate(90deg)}.metrics{grid-template-columns:1fr 1fr}.metric.main{grid-column:1/-1}.pass-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<main class="wrap">
+  <div class="topbar">
+    <div class="brand"><div class="logo" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 17V7a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v10"/><path d="M6 17h12"/><path d="M7 8h10v5H7z"/><circle cx="8" cy="18" r="1.5"/><circle cx="16" cy="18" r="1.5"/></svg></div><span>דרך לעבודה</span></div>
+    <div class="official"><span class="dot"></span> תעריפים לפי מקורות משרד התחבורה</div>
+  </div>
+
+  <section class="hero">
+    <h1 class="hero-title">דרך לעבודה</h1>
+    <p class="hero-subtitle">מחשבון נסיעות חכם</p>
+    <div class="bus-track" aria-hidden="true">
+      <div class="bus-road"></div>
+      <svg class="moving-bus" viewBox="0 0 80 52" role="img">
+        <defs>
+          <linearGradient id="busGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#0b5cff"/>
+            <stop offset="1" stop-color="#4f8cff"/>
+          </linearGradient>
+        </defs>
+        <path class="body" d="M10 11c0-4 3-7 7-7h42c7 0 11 5 11 12v24H10V11Z"/>
+        <rect class="window" x="18" y="10" width="15" height="13" rx="2.5"/>
+        <rect class="window" x="37" y="10" width="15" height="13" rx="2.5"/>
+        <rect class="window" x="56" y="10" width="9" height="13" rx="2.5"/>
+        <rect class="detail" x="16" y="27" width="47" height="3" rx="1.5"/>
+        <rect class="light" x="64" y="31" width="5" height="4" rx="1.5"/>
+        <circle class="wheel" cx="24" cy="41" r="7"/><circle class="hub" cx="24" cy="41" r="3"/>
+        <circle class="wheel" cx="58" cy="41" r="7"/><circle class="hub" cx="58" cy="41" r="3"/>
+      </svg>
+    </div>
+  </section>
+
+  <section class="card" aria-label="מחשבון נסיעות">
+    <div class="form-grid">
+      <div class="field"><label for="from">מאיפה יוצאים?</label><div class="input-wrap"><svg viewBox="0 0 24 24"><path d="M12 21s6-5.4 6-11a6 6 0 1 0-12 0c0 5.6 6 11 6 11Z"/><circle cx="12" cy="10" r="2"/></svg><input id="from" autocomplete="street-address" placeholder="למשל: צפת" /></div></div>
+      <button class="swap" id="swap" type="button" title="החלף מוצא ויעד" aria-label="החלף מוצא ויעד"><svg viewBox="0 0 24 24"><path d="M7 7h11l-3-3"/><path d="m18 7-3 3"/><path d="M17 17H6l3 3"/><path d="m6 17 3-3"/></svg></button>
+      <div class="field"><label for="to">לאן מגיעים?</label><div class="input-wrap"><svg viewBox="0 0 24 24"><path d="M12 21s6-5.4 6-11a6 6 0 1 0-12 0c0 5.6 6 11 6 11Z"/><circle cx="12" cy="10" r="2"/></svg><input id="to" autocomplete="street-address" placeholder="למשל: טבריה" /></div></div>
+    </div>
+    
+    <button class="primary" id="calc" type="button"><span class="spinner" aria-hidden="true"></span><span class="btn-text">חשב מחיר נסיעה</span></button>
+    <div class="error" id="error" role="alert"></div>
+
+    <div class="result" id="result" aria-live="polite">
+      <div class="route-line"><span class="route-chip" id="fromName"></span><span class="sep">←</span><span class="route-chip" id="toName"></span></div>
+      <div class="metrics">
+        <div class="metric main"><small>מחיר נסיעה לכיוון</small><strong id="oneWay">₪8</strong><span>אוטובוס</span></div>
+        <div class="metric"><small>הלוך + חזור</small><strong id="roundTrip">₪16</strong><span>שתי נסיעות בודדות</span></div>
+        <div class="metric"><small>חופשי חודשי מתאים</small><strong id="monthlyPrice">₪315</strong><span id="monthlyType">חופשי ארצי</span></div>
+      </div>
+    </div>
+  </section>
+<div class="credit" dir="ltr">Created by HavivZ</div>
+</main>
+<script>
+(() => {
+  'use strict';
+  const $ = s => document.querySelector(s);
+  const from=$('#from'),to=$('#to'),calc=$('#calc'),swap=$('#swap'),result=$('#result'),error=$('#error');
+  let VAT=1.18;
+  let fares=[
+    {max:15,price:8,label:'0–15'},
+    {max:40,price:14.5,label:'15–40'},
+    {max:75,price:19,label:'40–75'},
+    {max:120,price:19,label:'75–120'},
+    {max:225,price:30.5,label:'120–225'},
+    {max:Infinity,price:87.32,label:'225+'}
+  ];
+  let monthlyRates={nationalUpTo225:315,nationalOver225:684,zone1:139};
+
+  function validFareConfig(cfg){
+    if(!cfg||!Array.isArray(cfg.singleRide)||cfg.singleRide.length!==6||!cfg.monthly)return false;
+    const ps=cfg.singleRide.map(x=>Number(x.price));
+    return ps.every(Number.isFinite)&&ps[0]>0&&ps[0]<=ps[1]&&ps[1]<=ps[2]&&ps[2]<=ps[3]&&ps[3]<=ps[4]&&ps[4]<ps[5]
+      &&Number(cfg.monthly.nationalUpTo225)>0&&Number(cfg.monthly.nationalOver225)>=Number(cfg.monthly.nationalUpTo225)&&Number(cfg.monthly.zone1)>0;
+  }
+
+  async function loadFareConfig(){
+    try{
+      const res=await fetch('./data/fares.json',{cache:'no-store'});
+      if(!res.ok)throw new Error('fare config');
+      const cfg=await res.json();
+      if(!validFareConfig(cfg))throw new Error('invalid fare config');
+      const labels=['0–15','15–40','40–75','75–120','120–225','225+'];
+      const maxes=[15,40,75,120,225,Infinity];
+      fares=cfg.singleRide.map((x,i)=>({max:maxes[i],price:Number(x.price),label:labels[i]}));
+      monthlyRates={
+        nationalUpTo225:Number(cfg.monthly.nationalUpTo225),
+        nationalOver225:Number(cfg.monthly.nationalOver225),
+        zone1:Number(cfg.monthly.zone1)
+      };
+      if(Number(cfg.vat)>1)VAT=Number(cfg.vat);
+      window.__fareConfig=cfg;
+    }catch(e){
+      console.warn('Using built-in verified fare fallback.',e);
+    }
+  }
+  loadFareConfig();
+
+  const area99Raw=`בית אל, כפר אדומים, עפרה, פסגות, מעלה מכמש, מצפה יריחו, אפרת, אלון שבות, תקוע, אלעזר, נווה דניאל, נוקדים, ראש צורים, מגדל עוז, בת עין, כפר עציון, בית שמש, מסילת ציון, טל שחר, אשתאול, שריגים, זכריה, נחושה, צרעה, כפר אוריה, אדרת, צלפון, אביעזר, גבעת ישעיהו, ישעי, בקוע, תרום, תעוז, נתיב הל״ה, נווה מיכאל, נחם, לוזית, זנוח, נחשון, עגור, תירוש, מחסיה, גפן, שדות מיכה, צפרירים, נווה שלום, הראל, גיזו, עין גדי, קליה, ורד יריחו, אלמוג, בית הערבה, אבנת, מצפה שלם, קריית ארבע, כרמי צור, אספר, מעלה עמוס, אדורה, תלם, עלי, שילה, כוכב השחר, חלמיש, מעלה אפרים, עטרת, מעלה לבונה, רימונים, נחליאל, גיתית, תומר, פצאל, ייט״ב, גלגל, נתיב הגדוד, משואה, יפית, נעמי, נירן, אריאל, קרני שומרון, קדומים, עמנואל, ברכה, יקיר, אלון מורה, רבבה, ברקן, פדואל, כפר תפוח, יצהר, איתמר, מעלה השומרון, קריית נטפים, ברוכין, עלי זהב, נופים, מגדלים, נהריה, מעלות תרשיחא, בית ג׳אן, כיסרא, סמיע, שלומי, יאנוח ג׳ת, חורפיש, כפר ורדים, פקיעין, מזרעה, מעיליא, פסוטה, שיח׳ דנון, גשר הזיו, עראמשה, כפר ראש הנקרה, רגבה, מצובה, שבי ציון, אילון, עין יעקב, כברי, חוסן, מעונה, נווה זיו, בן עמי, עברון, סער, חניתה, לימן, יערה, עמקה, הילה, עבדון, געתון, נתיב השיירה, בית העמק, כליל, פקיעין החדשה, לוחמי הגטאות, גורן, אשרת, חלוץ, יחיעם, מנות, שומרה, אלקוש, צוריאל, נטועה, גיתה, אבן מנחם, שתולה, חרשים, בצת, זרעית, אבירים, מתת, גרנות הגליל, לפידות, אדמית, כרמיאל, סח׳נין, עראבה, מג׳אר, כפר מנדא, מג׳ד אל־כרום, נחף, דיר אל־אסד, דיר חנא, בענה, ראמה, עילבון, סאג׳ור, כווכב אבו אל־היג׳א, סלמה, כמאנה, כמון, מורשת, יובלים, גילון, עצמון, שגב, רקפת, עין אל־אסד, קורנית, צורית, שכניה, ערב אל־נעים, מנוף, אשחר, כפר חנניה, יעד, יודפת, חוסנייה, לוטם, טפחות, מורן, דמידה, שורשים, מכמנים, הררית, צביה, אבטליון, ראס אל־עין, שזור, חזון, אשבל, לבון, תובל, כישור, פלך, נצרת, נוף הגליל (לשעבר נצרת עילית), מגדל העמק, כפר כנא, יפיע, רינה, אכסאל, טורעאן, עין מאהל, בעינה נג׳ידאת, משהד, עילוט, זרזיר, עזיר, שמשית, הושעיה, רומת אל־היב, גבעת אלה, תמרת, רומאנה, יפעת, אלון הגליל, נהלל, שריד, הסוללים, ציפורי, מצפה נטופה, גבת, חנתון, גיניגר, כפר החורש, בית רימון, כפר ברוך, רמת דוד, באר שבע, רהט, לקייה, להבים, בית קמה, משמר הנגב, שומריה, שובל, דבירה, גבעות בר, להב, תראבין א־ס׳אנע, אופקים, תפרח, גילת, פטיש, חצרים, מסלול, בטחה, רנן, פדויים, תאשור, תדהר, ברוש, אשל הנשיא בית ספר אזורי, חורה, תל שבע, שגב שלום, עומר, מיתר, א־סייד, אבו כף אום בטין, נבטים, כרמים, מולדה, נתיבות, שדרות, מעגלים, מבועים, עין הבשור, בארי, מפלסים, תושיה, ברור חיל, סעד, דורות, בית הגדי, כפר עזה, ניר יצחק, אור הנר, יכיני, ניר עקיבא, תקומה, רוחמה, שובה, מגן, ניר משה, קלחים, שדה צבי, אורים, ארז, ניר עם, פעמי תש״ז, נווה, עלומים, צאלים, יבול, יתד, גבים, בני נצרים, יושיביה, תלמי ביל״ו, זרועה, רעים, מבטחים, נחל עוז, אוהד, עין השלושה, אשבול, ניר עוז, נירים, צוחר, ישע, איבים, שיבולים, זמרת, שדה ניצן, תלמי אליהו, דקל, גבעולים, שדי אברהם, שוקדה, כפר מימון, שרשרת, תלמי יוסף, גבולות, מלילות, סופה, אבשלים, כיסופים, עמיעוז, פרי גן, חולית, כרם שלום, שלומית, ירוחם, ביר הדאג׳, רביבים, משאבי שדה, אשלים, רתמים, ניצני סיני, טללים, כמהין, באר מילכה, ניצנה כפר נוער, מדרשת בן גוריון, שדה בוקר, מרחב עם, עזוז, דימונה, ערד, כסיפה, ערערה בנגב, קס׳ר א־סיר, אבו קרינאת, דריג׳את, שני ליבנה, נאות הכיכר, מכחול, עין תמר, נווה זוהר, כוחלה, סוסיה, עתניאל, טנא, חגי, אשכולות, מעון, מצדות יהודה, פני חבר, כרמל, שמעה, נגוהות, סנסנה, צפת, קריית שמונה, מג׳דל שמס, חצור הגלילית, קצרין, בוקעתא, טובא–זנגרייה, מסעדה, ג׳ש, ראש פינה, ר׳ג׳ר, עין קיניה, יסוד המעלה, איילת השחר, מטולה, ריחאנייה, שמיר, שדה נחמיה, דפנה, דלתון, מירון, כפר הנשיא, בר יוחאי, ביריה, להבות הבשן, בית הלל, אמירים, קשת, שדה אליעזר, ספסופה, הגושרים, עלמה, מעיין ברוך, כפר גלעדי, מרום גולן, דן, משמר הירדן, יובל, כרכום, ברעם, שאר ישוב, אליפלט, רמות נפתלי, יונתן, כפר בלום, עמיר, כפר סאלד, מחניים, שניר, חולתה, אניעם, נאות מרדכי, יפתח, דוב״ב, אביבים, מלכיה, אור הגנוז, כרם בן זמרה, עמיעד, יראון, סאסא, גדות, כפר שמאי, מרגליות, כורזים, דישון, גונן, אלמגור, שפר, אלוני הבשן, קדמת צבי, אל־רום, כחל, פרוד, אורטל, אמנון, משגב עם, מנרה, עין זיוון, שעל, קלע, קדרים, עמוקה, כדיתא, נווה אטי״ב, צבעון, אודם, טבריה, יבנאל, כפר כמא, גבעת אבני, מגדל, אפיקים, חמאם, חספין, פוריה, נווה עובד, בני יהודה, הזורעים, פוריה עילית, נוב, חד־נס, כינרת קבוצה, כפר זיתים, לביא, עין גב, כינרת מושבה, רמת מגשימים, דגניה ב׳, ארבל, כפר חיטים, אבני איתן, שער הגולן, גבעת יואב, דגניה א׳, שרונה, בית זרע, גינוסר, שדה אילן, רמות, חוקוק, אילניה, נאות הגולן, לבנים, מעלה גמלא, כנף, מסדה, מעגן, מסד, פוריה כפר עבודה, כפר חרוב, תל קציר, נטור, מבוא חמה, אלי עד, אפיק, אלומות, גשור, הודיות מוסד חינוכי, האון, כלנית, מצפה, מיצר, רביד, עפולה, מעלה עירון, דבוריה, שבלי, מוקייבלה, כפר תבור, גן נר, כפר מיסר, סולם שונם, נאעורה, אחוזת ברק, נין, א־טייבה, צנדלה, טמרה יזרעאל, תל עדשים, כפר יחזקאל, מרחביה קיבוץ, רם־און, מולדת, מגידו, עין דור, עין חרוד מאוחד, מדרך עוז, מרחביה מושב, גבע, גזית, ניר יפה, מזרע, דחי, היוגב, שדמות דבורה, רמת צבי, עין חרוד איחוד, יזרעאל, תל יוסף, גבעת עוז, בית קשת, אביטל, מגן שאול, מיטב, כפר קיש, בלפוריה, ברק, חבר, גדיש, מלאה, פרזון, דברת, אומן, גדעונה, כפר גדעון, אדירים, דבורה, כדורי, בית שאן, בית אלפא, בית השיטה, מנחמיה, אשדות יעקב איחוד, טירת צבי, שדה אליהו, ניר דוד, עין הנצי״ב, מירב, רשפים, מעלה גלבוע, שדמות מחולה, שלוחות, גשר, מסילות, שדה נחום, בית יוסף, חפצי־בה, מעוז חיים, כפר רופין, מחולה, תל תאומים, שדי תרומות, אשדות יעקב מאוחד, חמדיה, נווה איתן, רוויה, רחוב, ירדנה, נווה אור, חמדת, בקעות, רועי, מלכישוע, משכיות, ארגמן, מכורה, רותם, תמרה, אום אל־פחם, באקה אל־ר׳רבייה, ערערה, כפר קרע, ג׳ת, בסמ״ה, קציר, מיסר, אום אל־קטף, מגל, חיננית, חריש, שקד, מצר, מי עמי, מצפה אילן, מבוא דותן, חרמש, אל־עריאן, ריחן, אשקלון, קריית מלאכי, יד בנימין, מרכז שפירא, ניצן ב׳, בני ראם, כפר מנחם, ניצן, ברכיה, עין צורים, ינון, בית עזרא, ערוגות, כפר ורבורג, משען, גבעתי, כוכב מיכאל, באר טוביה, אמונים, גיאה, תלמי יחיאל, עזר, ניר ישראל, נגבה, תימורים, כפר הרי״ף, בית שיקמה, שפיר, נתיב העשרה, אביגדור, כפר אחים, בית חלקיה, תלמי יפה, משואות יצחק, זרחיה, יד מרדכי, ניר בנים, בת הדר, כרמיה, זיקים, הודיה, רבדים, אורות, שדה יואב, ניצנים, חפץ חיים, גברעם, מבקיעים, קדמה, כפר סילבר, אל־עזי, גני טל, אחווה, קריית גת, אבן שמואל, נהורה, תלמים, שחר, לכיש, שדה משה, סגולה, גת, שקף, יד נתן, עוצם, אמציה, בית ניר, רווחה, נוגה, אחוזם, מנוחה, אלומה, זבדיאל, ניר ח״ן, נחלה, עוזה, חלץ, שלווה, קוממיות, איתן, שדה דוד, בית גוברין, נועם, גלאון, זוהר, ורדון, נטע`;
+  const zoneRaw={
+    '99':area99Raw,
+    '901':'אילות, אילת, באר אורה',
+    '902':'יטבתה, קטורה, פארן, ספיר, צופר, גרופית, סמר, יהל, נאות סמדר, צוקים, לוטן, נווה חריף, שחרות, אליפז',
+    '903':'מצפה רמון, עין יהב, חצבה, עידן'
+  };
+
+  function norm(s){
+    return String(s||'').normalize('NFKC').toLowerCase()
+      .replace(/\([^)]*\)/g,' ')
+      .replace(/["'׳״`’‘“”]/g,'')
+      .replace(/[־\-–—]/g,' ')
+      .replace(/[.,;:!?/\\|]/g,' ')
+      .replace(/\s+/g,' ').trim();
+  }
+  function canon(s){
+    let x=norm(s);
+    const direct={
+      'קרית שמונה':'קריית שמונה','קרית ארבע':'קריית ארבע','קרית מלאכי':'קריית מלאכי','קרית גת':'קריית גת','קרית נטפים':'קריית נטפים',
+      'נצרת עילית':'נוף הגליל','מעלות תרשיחא':'מעלות תרשיחא','באקה אל גרבייה':'באקה אל ררבייה','באקה אל גרביה':'באקה אל ררבייה',
+      'אום אל פחם':'אום אל פחם','עין הנציב':'עין הנציב','חפציבה':'חפצי בה','דובב':'דובב','יטב':'ייטב','מגאר':'מגאר','סחנין':'סחנין',
+      'טובא זנגריה':'טובא זנגרייה','כינרת':'כנרת','קבוצת כנרת':'כינרת קבוצה','מושבת כנרת':'כינרת מושבה','באר שבע':'באר שבע',
+      'גסר א זרקא':'גסר א זרקא'
+    };
+    return direct[x]||x;
+  }
+
+  const zones={};
+  const localityToZone=new Map();
+  Object.entries(zoneRaw).forEach(([z,raw])=>{
+    zones[z]=new Set(raw.split(',').map(canon).filter(Boolean));
+    zones[z].forEach(name=>localityToZone.set(name,z));
+  });
+  // כינויים נפוצים שלא כתובים בדיוק באותה צורה בצו/ב-OSM.
+  const aliases=new Map([
+    ['נוף הגליל','99'],['נצרת עילית','99'],['באקה אל גרביה','99'],['באקה אל גרבייה','99'],['אום אל פחם','99'],
+    ['מעלות תרשיחא','99'],['קרית שמונה','99'],['קרית ארבע','99'],['קרית מלאכי','99'],['קרית גת','99'],['קרית נטפים','99'],
+    ['חפציבה','99'],['עין הנציב','99'],['טובא זנגריה','99'],['אילת','901'],['באר אורה','901']
+  ].map(([n,z])=>[canon(n),z]));
+
+  function money(n){return '₪'+Number(n).toLocaleString('he-IL',{minimumFractionDigits:Number.isInteger(n)?0:2,maximumFractionDigits:2});}
+  function trunc2(n){return Math.floor((n+1e-9)*100)/100;}
+  function haversine(a,b){const R=6371.0088,rad=x=>x*Math.PI/180,dLat=rad(b.lat-a.lat),dLon=rad(b.lon-a.lon),lat1=rad(a.lat),lat2=rad(b.lat);const h=Math.sin(dLat/2)**2+Math.cos(lat1)*Math.cos(lat2)*Math.sin(dLon/2)**2;return 2*R*Math.asin(Math.sqrt(h));}
+  function fareForKm(km){return fares.find(x=>km<=x.max);}
+
+  function candidates(g,original){
+    const a=g.address||{};
+    const vals=[a.city,a.town,a.village,a.hamlet,a.municipality,a.suburb,a.city_district,g.name,original];
+    // רכיבי display_name כיחידות שלמות בלבד — לעולם לא חיפוש substring.
+    if(g.display_name) vals.push(...g.display_name.split(',').slice(0,7));
+    const out=[];
+    for(const v of vals){const c=canon(v);if(c&&!out.includes(c))out.push(c);}
+    return out;
+  }
+  function detectZone(g,original){
+    for(const c of candidates(g,original)){
+      if(localityToZone.has(c)) return {zone:localityToZone.get(c),locality:c,source:'צו'};
+      if(aliases.has(c)) return {zone:aliases.get(c),locality:c,source:'כינוי'};
+    }
+    return {zone:null,locality:candidates(g,original)[0]||canon(original),source:'לא נמצא'};
+  }
+  function isEilatTouch(za,zb){return za.zone==='901'||zb.zone==='901';}
+  function zone1Eligibility(za,zb,km){
+    if(km>40) return {eligible:false,reason:'המרחק גדול מ־40 ק״מ'};
+    if(!za.zone||!zb.zone) return {eligible:false,reason:'לפחות אחד מהיישובים אינו מופיע באזורי 99/901/902/903 של חופשי אזור 1'};
+    if(za.zone!==zb.zone) return {eligible:false,reason:`היישובים נמצאים באזורי זכאות שונים (${za.zone} ו־${zb.zone})`};
+    return {eligible:true,reason:`שני היישובים נמצאים באזור ${za.zone} והמרחק עד 40 ק״מ`,zone:za.zone};
+  }
+
+  async function geocode(q){
+    const url='https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&countrycodes=il&limit=5&accept-language=he,en&q='+encodeURIComponent(q+', ישראל');
+    const res=await fetch(url,{headers:{Accept:'application/json'}});if(!res.ok)throw new Error('geocode');
+    const data=await res.json();if(!data.length)return null;
+    const scored=data.map((d,i)=>{
+      const a=d.address||{},qN=canon(q),cand=[a.city,a.town,a.village,a.hamlet,d.name].map(canon);
+      const exact=cand.includes(qN)?10:0; const place=['city','town','village','hamlet','administrative'].includes(d.type)?2:0;
+      return {d,score:exact+place-i*.01};
+    }).sort((x,y)=>y.score-x.score)[0].d;
+    return {lat:Number(scored.lat),lon:Number(scored.lon),name:(scored.display_name||q).split(',').slice(0,3).join(', '),display_name:scored.display_name||q,address:scored.address||{},type:scored.type||'',osm_id:scored.osm_id};
+  }
+
+  function boundaryInfo(km){
+    const boundaries=[15,40,75,120,225];
+    const near=boundaries.find(b=>Math.abs(km-b)<=1.0);
+    return near?`המרחק שחושב (${km.toFixed(1)} ק״מ) קרוב לגבול תעריף של ${near} ק״מ. לדיוק מרבי מומלץ להזין כתובת או תחנת עלייה/ירידה מדויקת.`:null;
+  }
+  function setLoading(on){calc.disabled=on;calc.classList.toggle('loading',on);$('.btn-text').textContent=on?'מחשב את המחיר…':'חשב מחיר נסיעה';}
+  function showError(msg){error.textContent=msg;error.style.display='block';result.style.display='none';}
+  function hideError(){error.style.display='none';}
+
+  async function calculate(){
+    const a=from.value.trim(),b=to.value.trim();if(!a||!b){showError('צריך למלא גם מקום מוצא וגם יעד.');return;}
+    hideError();setLoading(true);
+    try{
+      const [ga,gb]=await Promise.all([geocode(a),geocode(b)]);if(!ga||!gb){showError('לא הצלחנו לזהות אחד המקומות. נסה לכתוב יישוב או כתובת מלאה יותר.');return;}
+      const km=haversine(ga,gb),fare=fareForKm(km),za=detectZone(ga,a),zb=detectZone(gb,b),eilat=isEilatTouch(za,zb);
+      let oneWay=fare.price;
+      // נסיעות אל אילת/בתוך אילת/מאילת מנוכות ממע"מ. אזור 901 משמש זיהוי שמרני לליבת אילת.
+      if(eilat) oneWay=trunc2(oneWay/VAT);
+      const roundTrip=trunc2(oneWay*2);
+
+      $('#fromName').textContent=(ga.name||a).split(',')[0].trim();$('#toName').textContent=(gb.name||b).split(',')[0].trim();$('#oneWay').textContent=money(oneWay);$('#roundTrip').textContent=money(roundTrip);
+
+      const z1=zone1Eligibility(za,zb,km);
+      let monthlyPrice, monthlyType;
+      if(z1.eligible){
+        monthlyPrice=(z1.zone==='901')?trunc2(monthlyRates.zone1/VAT):monthlyRates.zone1;
+        monthlyType='חופשי אזור 1';
+      }else{
+        monthlyPrice=km>225?monthlyRates.nationalOver225:monthlyRates.nationalUpTo225;
+        monthlyType='חופשי ארצי';
+      }
+      $('#monthlyPrice').textContent=money(monthlyPrice);
+      $('#monthlyType').textContent=monthlyType;
+      result.style.display='block';result.classList.remove('show');void result.offsetWidth;result.classList.add('show');result.scrollIntoView({behavior:'smooth',block:'nearest'});
+    }catch(e){showError('לא הצלחנו להתחבר לשירות איתור הכתובות כרגע. בדוק שיש חיבור לאינטרנט ונסה שוב.');}
+    finally{setLoading(false);}
+  }
+
+  calc.addEventListener('click',calculate);[from,to].forEach(el=>el.addEventListener('keydown',e=>{if(e.key==='Enter')calculate();}));swap.addEventListener('click',()=>{const tmp=from.value;from.value=to.value;to.value=tmp;result.style.display='none';hideError();from.focus();});
+  if('serviceWorker' in navigator) window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+
+  // בדיקות עצמיות שקטות; במקרה של שגיאת לוגיקה הן מופיעות בקונסול ולא למשתמש.
+  function selfTest(){
+    const failures=[];const ok=(cond,msg)=>{if(!cond)failures.push(msg)};
+    ok(fareForKm(0)===fares[0]&&fareForKm(15)===fares[0],'band 0–15');
+    ok(fareForKm(15.001)===fares[1]&&fareForKm(40)===fares[1],'band 15–40');
+    ok(fareForKm(40.001)===fares[2]&&fareForKm(75)===fares[2],'band 40–75');
+    ok(fareForKm(75.001)===fares[3]&&fareForKm(120)===fares[3],'band 75–120');
+    ok(fareForKm(120.001)===fares[4]&&fareForKm(225)===fares[4],'band 120–225');
+    ok(fareForKm(225.001)===fares[5],'band 225+');
+    ok(zones['99'].size>=730,'area99 list size');ok(zones['901'].size===3,'901 size');ok(zones['902'].size===14,'902 size');ok(zones['903'].size===4,'903 size');
+    ['צפת','טבריה','בית שמש','אריאל','נהריה','כרמיאל','נצרת','נוף הגליל','באר שבע','אשקלון','קריית גת','חריש','אום אל־פחם'].forEach(n=>ok(localityToZone.get(canon(n))==='99'||aliases.get(canon(n))==='99',`area99 ${n}`));
+    ['תל אביב','ירושלים','חיפה','רעננה','רמת גן','הרצליה'].forEach(n=>ok(!localityToZone.has(canon(n)),`not area1 ${n}`));
+    ok(zone1Eligibility({zone:'99'},{zone:'99'},39.9).eligible,'same 99 <=40');ok(!zone1Eligibility({zone:'99'},{zone:'99'},40.1).eligible,'same 99 >40');ok(zone1Eligibility({zone:'901'},{zone:'901'},20).eligible,'same 901');ok(!zone1Eligibility({zone:'901'},{zone:'902'},20).eligible,'cross-zone');
+    ok(trunc2(fares[0].price/VAT)>0,'eilat short');ok(trunc2(fares[5].price/VAT)>fares[0].price,'eilat long');
+    if(failures.length) console.error('QA failures',failures); else console.info('QA passed: fare boundaries, Area 1 zones and Eilat VAT tests.');
+    return failures;
+  }
+  window.__travelCalcQA=selfTest();
+})();
+</script>
+</body></html>

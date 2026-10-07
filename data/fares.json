@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-10-07T00:00:00.000Z",
+  "source": {
+    "singleRide": "https://gtfs.mot.gov.il/gtfsfiles/israel-public-transportation.zip",
+    "monthly": "https://bus.gov.il/FaresDistance"
+  },
+  "vat": 1.18,
+  "singleRide": [
+    { "maxKm": 15, "price": 8 },
+    { "maxKm": 40, "price": 14.5 },
+    { "maxKm": 75, "price": 19 },
+    { "maxKm": 120, "price": 19 },
+    { "maxKm": 225, "price": 30.5 },
+    { "maxKm": null, "price": 87.32 }
+  ],
+  "monthly": {
+    "nationalUpTo225": 315,
+    "nationalOver225": 684,
+    "zone1": 139
+  }
+}
