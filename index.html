@@ -33,10 +33,18 @@
 input{cursor:default}
 .moving-bus{
 left:8px;
-  animation:driveFixed 8s ease-in-out infinite alternate!important;
+animation:driveFixed 10s ease-in-out infinite!important;
 }
 
 @keyframes driveFixed{
+  0%{left:8px;transform:translateY(0) scaleX(1)}
+  45%{left:calc(100% - 66px);transform:translateY(-1px) scaleX(1)}
+  49%{left:calc(100% - 66px);transform:translateY(0) scaleX(1)}
+  50%{left:calc(100% - 66px);transform:translateY(0) scaleX(-1)}
+  95%{left:8px;transform:translateY(-1px) scaleX(-1)}
+  99%{left:8px;transform:translateY(0) scaleX(-1)}
+  100%{left:8px;transform:translateY(0) scaleX(1)}
+}
   0%{left:8px;transform:translateY(0)}
   50%{transform:translateY(-1px)}
   100%{left:calc(100% - 66px);transform:translateY(0)}
