@@ -37,13 +37,12 @@ animation:driveFixed 10s ease-in-out infinite!important;
 }
 
 @keyframes driveFixed{
-  0%{left:8px;transform:translateY(0) scaleX(1)}
-  45%{left:calc(100% - 66px);transform:translateY(-1px) scaleX(1)}
-  49%{left:calc(100% - 66px);transform:translateY(0) scaleX(1)}
-  50%{left:calc(100% - 66px);transform:translateY(0) scaleX(-1)}
-  95%{left:8px;transform:translateY(-1px) scaleX(-1)}
-  99%{left:8px;transform:translateY(0) scaleX(-1)}
-  100%{left:8px;transform:translateY(0) scaleX(1)}
+  0%{left:8px;opacity:0;transform:translateY(0)}
+  5%{left:8px;opacity:1}
+  88%{left:calc(100% - 66px);opacity:1;transform:translateY(-1px)}
+  95%{left:calc(100% - 66px);opacity:0;transform:translateY(0)}
+  100%{left:8px;opacity:0;transform:translateY(0)}
+}
 }
   0%{left:8px;transform:translateY(0)}
   50%{transform:translateY(-1px)}
